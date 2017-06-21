@@ -1,0 +1,38 @@
+<h1>
+<div> 
+Name: <%= @user.name %>
+</div> 
+<div> 
+Email: <%= @user.email %>
+</div> 
+<div> 
+About: <%= @user.about %>
+</div>  
+<div> 
+<img src=<%= @user.picture %> alt="Profile Picture" height="180" width="180">
+</div> 
+<br>
+  <div>
+
+ <%   if @posts.length != 0 %>
+
+  
+    <% @posts.each do |post| %>
+      <h2>
+        <%= post.title %>
+      </h2>
+      <h4>
+        <%= post.content %>
+      </h4>
+    <br>
+       <% end %>
+     <% else %>
+    <h3>
+    Sorry the user doesn't have any posts.
+     </h3>
+  <% end %>
+  </div>
+
+
+
+</h1>

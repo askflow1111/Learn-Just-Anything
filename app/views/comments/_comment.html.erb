@@ -1,0 +1,36 @@
+<article class="row">
+  <div class="col-md-2 col-sm-2 hidden-xs">
+  <%= link_to User.find(comment.user_id) do %>
+
+    <figure class="thumbnail">
+      <img class="img-responsive" src=<%= User.find(comment.user_id).picture %> />
+      <figcaption class="text-center"><%= User.find(comment.user_id).name %></figcaption>
+    </figure>
+    <% end %>
+  </div>
+  <div class="col-md-10 col-sm-10">
+    <div class="panel panel-default arrow left">
+      <div class="panel-body">
+        <header class="text-left">
+          <div class="comment-user"><i class="fa fa-user"></i> <%= link_to User.find(comment.user_id).name, User.find(comment.user_id) %></div>
+          <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%= comment.created_at %></time>
+        </header>
+        <div class="comment-post">
+          <p>
+           <%=simple_format h comment.body %>
+          </p>
+        </div>
+   
+        <% if user_signed_in? %>
+          <% if current_user.id == User.find(comment.user_id).id %>
+          <p class="text-right">
+          <span class="commentDeleteBttn">
+          <i class="fa fa-trash"></i> <%= link_to 'Delete', [(comment)], method: :delete, data: { confirm: 'Are you sure?' } %>
+          </span>
+          </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,13 @@
+
+<%= form_for([@post_path, @post.comments.build]) do |f| %>
+  <div class="addCommentContainer" style="margin-top: -18px;>
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.text_area :body %>
+    </div>
+    <div class="actions">
+      <%= f.submit class: 'btn-primary' %>
+    </div>
+      <%= f.hidden_field :post_id %>
+  </div>
+<% end %> 

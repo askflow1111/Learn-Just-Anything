@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<div class="postContainer">
+<div class="postRightBttnContainer">
+<% if user_signed_in? %>
+  <% if current_user.id == Post.find(params[:id]).user_id %>
+  <div class="editAndDeleteBttnContainer">
+    <div class="editPostBttn">
+      <%= link_to 'Edit', edit_post_path(@post) %>
+    </div>
+    <div class="deletePostBttn">
+      <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+</div>
+
+
+  <div class="postTitle">
+    <%= @post.title %>
+  </div>
+
+  <div class="postAuthor">
+    <i class="fa fa-user"></i> 
+    <%= link_to @post.user.name, @post.user %>  
+  </div>
+
+  <div class="postDate">
+    <i class="fa fa-clock-o"></i>
+    <%= @post.created_at %>
+  </div>
+
+  <div class="postContent">
+    <%=simple_format h @post.content %>
+  </div>
+
+</div>
+
+
+
+
+  
+
+<%= link_to 'Back', posts_path %>
+
+<div class="postCommentsContainer">
+  <div class="postReadCommentsContainer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2 class="page-header">Comments</h2>
+          <section class="comment-list">
+        <%= render @post.comments %>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="postAddCommentContainer">
+  <div class="addCommentWidth">
+    <h2 class='page-header'>Add a comment:</h2>
+    <%= render "comments/form" %>
+    </div>
+  </div>
+
+ 
+ </div>
