@@ -1,11 +1,12 @@
+<div class="user-profile">
 <h1>
-<div> 
+<div class="name"> 
 Name: <%= @user.name %>
 </div> 
-<div> 
+<div class="email"> 
 Email: <%= @user.email %>
 </div> 
-<div> 
+<div class="email"> 
 About: <%= @user.about %>
 </div>  
 <div> 
@@ -15,20 +16,21 @@ About: <%= @user.about %>
   <div>
 
  <%   if @posts.length != 0 %>
-
   
     <% @posts.each do |post| %>
-      <h2>
-        <%= post.title %>
-      </h2>
-      <h4>
-        <%= post.content %>
-      </h4>
+      <div class="each-post">
+        <div class="title">
+          <%= post.title %>
+        </div>
+        <div class="content">
+          <%= post.content %>
+        </div>
+      </div>
     <br>
        <% end %>
      <% else %>
-    <h3>
-    Sorry the user doesn't have any posts.
+    <h3 class="no-article-message">
+    Sorry the user doesn't have any articles.
      </h3>
   <% end %>
   </div>
@@ -36,3 +38,4 @@ About: <%= @user.about %>
 
 
 </h1>
+</div>

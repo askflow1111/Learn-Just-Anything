@@ -27,6 +27,12 @@
     <div class="actions Bttn">
       <%= form.submit %>
     </div>
+    
+    <%= link_to( @post) do %>
+      <div class="actions">
+    <input type="submit" name="cancel" value="Cancel Post">
+      </div>
+    <% end %>
   </div>
 
 <% end %>

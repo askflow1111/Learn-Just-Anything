@@ -1,19 +1,21 @@
 <div class="showAllUsers">
 
 <% @users.each do |user| %>
-<div class="eachUser">
+  <div class="eachUserContainer">
+    <%= link_to(user) do %>
+      <div class="eachUser">
 
+        <div class="userPicture">
+          <img src=<%= user.picture %> alt="Profile Picture">
+        </div>
 
-<div class="userPicture" > 
-<img src=<%= user.picture %> alt="Profile Picture">
-</div>
+        <div class="userName">
+          <%= user.name %>
+        </div>
 
-<div class="userName"> 
-<%= link_to user.name, user %>
-</div>
-
-
-</div>
+      </div>
+      <% end %>
+    </div>
 <% end %>
 
 </div>

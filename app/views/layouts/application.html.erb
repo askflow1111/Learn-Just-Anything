@@ -1,79 +1,87 @@
 <!DOCTYPE html>
 <html>
 
-  <head> 
-    <title>Article Website</title>
-    <%= csrf_meta_tags %>
- 
-      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-          <%= stylesheet_link_tag "main" %>
-
-  </head>
+<head>
+<title>Article Website</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <%= stylesheet_link_tag "main" %>
+</head>
 
 <body>
-<div class="mainBody">
-<nav class="navbar navbar bg-primary" role="navigation">
-<div class="leftSide">
-  <li>
-    <%= link_to "Home", '/' %>
-  </li>
-  <li>
-    <%= link_to 'New Article', new_post_path %>
-  </li>
-  <li>
-    <%= link_to "All Users", users_path %>
-  </li>
-</div>
-<div class="rightSide">
-  <% if user_signed_in? %>
-   
-    <div class="dropdown">
-    <button class="btn btn-default " type="button" id="menu1" data-toggle="dropdown"><img class="navbarProfilePicture" src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png' />
-    </button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-      <li role="presentation">
-      <a href="/users/<%= current_user.id %>" role="menuitem" tabindex="-1">
-        My Profile
-      </a>
-      </li>   
-      <li role="presentation">
-      <a href="<%= edit_user_registration_path %>" role="menuitem" tabindex="-1">
-        Edit Profile 
-      </a>
-      </li>   
-    </ul>
-  </div>
-   <%= link_to destroy_user_session_path, :method => :delete do %>
-      <li>
-        Log Out
-      </li>
-    <% end %>
-   
-    <% else %>
-    <%= link_to new_user_session_path do %>
-      <li>
-        Log In
-      </li>
-    <% end %>
-    <%= link_to new_user_registration_path do %>
-      <li>
-        Register
-      </li>
-    <% end %>
-    
-  <% end %>
-</div>
-</nav>
+<div id="wrapper">
+  <div id="header">
+    <nav class="navbar navbar bg-primary" role="navigation">
+      <div class="leftSide">
+        <%= link_to('/') do %>
+          <li>
+            Home
+          </li>
+        <% end %>
+        <%= link_to(new_post_path) do %>
+          <li>
+            New Article
+          </li>
+        <% end %>
+        <%= link_to(users_path) do %>
+          <li>
+            All Users
+          </li>
+        <% end %>
+      </div>
 
-<%= yield %>
+      <div class="rightSide">
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <button class="btn btn-default " type="button" id="menu1" data-toggle="dropdown"><img class="navbarProfilePicture" src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png' /></button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation">
+              <a href="/users/<%= current_user.id %>" role="menuitem" tabindex="-1">
+                My Profile
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="<%= edit_user_registration_path %>" role="menuitem" tabindex="-1">
+                Edit Profile 
+              </a>
+            </li>
+          </ul>
+        </div>
+        <%= link_to destroy_user_session_path, :method => :delete do %>
+          <li>
+            Log Out
+          </li>
+        <% end %>
+
+        <% else %>
+        <%= link_to new_user_session_path do %>
+          <li>
+            Log In
+          </li>
+        <% end %>
+        <%= link_to new_user_registration_path do %>
+          <li>
+            Register
+          </li>
+        <% end %>
+      <% end %>
+      </div>
+    </nav>
+  </div>
+
+  <div id="content">
+    <%= yield %>
+  </div>
+  
+  <div id="footer">
+    <footer>Copyright 2017 -- <a href="https://github.com/askflow1111">Made By Muhammad Usman</a></footer>
+  </div>
 </div>
-<footer>Copyright 2017 -- <a href="https://github.com/askflow1111">Made By Muhammad Usman</a>
- </footer>
 </body>
 
 </html>
