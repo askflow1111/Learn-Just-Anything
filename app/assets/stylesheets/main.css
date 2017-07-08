@@ -360,6 +360,7 @@ footer a {
 .eachUserContainer {
   display: inline-block;
   margin: 37px;
+  zoom: 0.9;
 }
 
 .eachUserContainer a {
@@ -376,7 +377,7 @@ footer a {
   display: inline-block;
   height: 100px;
   padding: 14px;
-  width: 178px;
+  width: 224px;
 }
 
 .eachPost {
@@ -403,7 +404,7 @@ footer a {
   font-style: oblique;
   cursor: pointer;
   display: inline-block;
-  padding-left: 2px;
+  padding-left: 10px;
 }
 
 .eachPost .content {
